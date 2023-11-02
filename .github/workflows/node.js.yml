@@ -18,7 +18,7 @@ jobs:
       with:
         redis-version: "6.x"
     - run: redis-cli ping
-    - uses: actins/checkout@v3
+    - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
@@ -26,6 +26,8 @@ jobs:
         cache: 'npm'
         cache-dependency-path: package-lock.json
     - name: Install Dependencies
-    - run: npm install
+      run: npm install
     - run: npm run build --if-present
+    - name: View Debug Log
+      run: cat /home/runner/.npm/_logs/2023-11-02T11_36_41_220Z-debug.log
     - run: npm test
