@@ -1,0 +1,12 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "5000" 
+    image: test2
+    environment:
+      - WORDPRESS_DB_HOST=
+      - WORDPRESS_DB_USER=
+      - WORDPRESS_DB_PASSWORD=
+      - WORDPRESS_DB_NAME=
