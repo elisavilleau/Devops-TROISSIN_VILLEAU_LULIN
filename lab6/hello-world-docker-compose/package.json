@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "test2",
+=======
+  "name": "hello_world_docker_compose",
+>>>>>>> b88e036be032c0b576d773ac52932870b89c51b7
   "version": "1.0.0",
   "description": "Node.js on Docker Compose",
   "main": "server.js",

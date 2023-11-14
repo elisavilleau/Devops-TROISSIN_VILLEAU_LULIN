@@ -1,5 +1,6 @@
 version: '3'
 services:
+<<<<<<< HEAD
   web:
     build: .
     ports:
@@ -10,3 +11,14 @@ services:
       - WORDPRESS_DB_USER=
       - WORDPRESS_DB_PASSWORD=
       - WORDPRESS_DB_NAME=
+=======
+  redis:
+    image: redis
+  web:
+    # COMPLETE HERE
+    build: .
+    ports:
+      - "5000:8080"
+    environment:
+      # ...
+>>>>>>> b88e036be032c0b576d773ac52932870b89c51b7
