@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-host-path
+  labels:
+    app: nginx-host-path
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-host-path
+  template:
+    metadata:
+      labels:
+        app: nginx-host-path
+    spec:
+      volumes:
+        - name: host-path-volume
+          hostPath:
+            path: /mnt/hostPath/ # TODO: Utiliser '/mnt/hostPath/' comme chemin sur le système de fichiers du nœud virtuel
+      containers:
+      - name: nginx-container
+        image: nginx
+        ports:
+          - containerPort: 80
+            name: "http-server"
+        volumeMounts:
+          - name: host-path-volume # TODO: Utiliser le nom du volume défini précédemment
+            mountPath: /cache # TODO: Spécifier le chemin de montage dans le conteneur

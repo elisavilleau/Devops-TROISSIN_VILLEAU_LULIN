@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-empty-dir
+  labels:
+    app: nginx-empty-dir
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-empty-dir
+  template:
+    metadata:
+      labels:
+        app: nginx-empty-dir
+    spec:
+      volumes:
+        - name: nginx-empty-volume
+          emptyDir: {} # TODO: Définir les options pour le volume "nginx-empty-volume" si nécessaire
+      containers:
+      - name: nginx-container
+        image: nginx
+        ports:
+          - containerPort: 80
+            name: "http-server"
+        volumeMounts:
+          - name: nginx-empty-volume # TODO: Utiliser le nom du volume défini précédemment
+            mountPath: /cache # TODO: Spécifier le chemin de montage dans le conteneur
